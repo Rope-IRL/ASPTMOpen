@@ -1,0 +1,72 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
+  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.flat{
+    display:flex;
+    flex-direction:column;
+    gap:0.5rem;
+    border-bottom: 4px solid;
+}
+
+.flat-header{
+    display:flex;
+    flex-direction:column;
+    gap:0.5rem;
+}
+
+.flat-header-name {
+    width:fit-content;
+    font-size: x-large;
+    font-weight: 600;
+    border-bottom: 2px solid;
+    border-color: greenyellow;
+}
+
+
+.flat-availabilities {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+}
+
+.contract{
+    display: flex;
+    flex-direction:column;
+    gap:0.5rem;
+    border-bottom: 4px solid;
+    border-color:black;
+}
+
+.contract-flat-header {
+    font-weight: 600;
+    font-size: x-large;
+    width: fit-content;
+    border-bottom: 2px solid;
+    border-color: greenyellow;
+}
+
+.contract-reservation_dates{
+    display:flex;
+    flex-direction:row;
+    gap:0.5rem;
+}

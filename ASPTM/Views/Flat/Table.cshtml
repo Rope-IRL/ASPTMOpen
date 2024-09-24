@@ -1,0 +1,48 @@
+﻿@model IEnumerable<Flat>
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    <div>
+        @foreach(var flat in Model)
+        {
+            <div class="flat">
+                <div class="flat-header">
+                    <div class="flat-header-name">
+                        @flat.Header
+                    </div>
+                    <div class="flat-header-city">
+                        @flat.City
+                    </div>
+                </div>
+                <div class="flat-description">
+                    @flat.Description
+                </div>
+                <div class="flat-availabilities">
+                    <div class="flat-availabilities-wifi">
+                        @if (flat.WiFiAvailability)
+                        {
+                            <p>Wi-Fi available</p>
+                        }
+                        else{
+                            <p>Wi-Fi not available</p>
+                        }
+                    </div>
+                    <div class="flat-availabilities-bathroom">
+                        @if (flat.BathroomAvailability)
+                        {
+                            <p>Bathroom available</p>
+                        }
+                        else
+                        {
+                            <p>Bathroom not available</p>
+                        }
+                    </div>
+                </div>
+                <div class="flat-cost">
+                   Cost @flat.CostPerDay
+                </div>
+            </div>
+        }
+    </div>
+}
