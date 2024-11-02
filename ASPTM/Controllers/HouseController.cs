@@ -1,6 +1,6 @@
-﻿using ASPTM.Helpers;
-using ASPTM.MIddleware;
+﻿
 using ASPTM.Models;
+using ASPTM.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
@@ -9,10 +9,10 @@ namespace ASPTM.Controllers
 {
     public class HouseController : Controller
     {
-        private HouseMiddleware h_middleware;
+        private HouseService h_middleware;
 
 
-        public HouseController(HouseMiddleware h_middleware)
+        public HouseController(HouseService h_middleware)
         {
             this.h_middleware = h_middleware;
         }

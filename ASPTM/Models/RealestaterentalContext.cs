@@ -37,9 +37,6 @@ public partial class RealestaterentalContext : DbContext
 
     public virtual DbSet<RoomsContract> RoomsContracts { get; set; }
 
-    public virtual DbSet<SelectallLandlordInfoView> SelectallLandlordInfoViews { get; set; }
-
-    public virtual DbSet<SelectallLesseeInfoView> SelectallLesseeInfoViews { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -64,7 +61,7 @@ public partial class RealestaterentalContext : DbContext
     {
         modelBuilder.Entity<Flat>(entity =>
         {
-            entity.HasKey(e => e.Fid).HasName("PK__Flats__C1D1314A037B5BCD");
+            entity.HasKey(e => e.Fid);
 
             entity.Property(e => e.Address).HasMaxLength(100);
             entity.Property(e => e.AvgMark).HasColumnType("decimal(3, 2)");
@@ -75,33 +72,29 @@ public partial class RealestaterentalContext : DbContext
             entity.Property(e => e.Llid).HasColumnName("LLid");
 
             entity.HasOne(d => d.Ll).WithMany(p => p.Flats)
-                .HasForeignKey(d => d.Llid)
-                .HasConstraintName("FK__Flats__LLid__48CFD27E");
+                .HasForeignKey(d => d.Llid);
         });
 
         modelBuilder.Entity<FlatsContract>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__FlatsCon__3214EC07DD81DD64");
+            entity.HasKey(e => e.Id);
 
             entity.Property(e => e.Cost).HasColumnType("money");
             entity.Property(e => e.Llid).HasColumnName("LLid");
 
             entity.HasOne(d => d.FidNavigation).WithMany(p => p.FlatsContracts)
-                .HasForeignKey(d => d.Fid)
-                .HasConstraintName("FK__FlatsContra__Fid__4D94879B");
+                .HasForeignKey(d => d.Fid);
 
             entity.HasOne(d => d.LidNavigation).WithMany(p => p.FlatsContracts)
-                .HasForeignKey(d => d.Lid)
-                .HasConstraintName("FK__FlatsContra__Lid__4BAC3F29");
+                .HasForeignKey(d => d.Lid);
 
             entity.HasOne(d => d.Ll).WithMany(p => p.FlatsContracts)
-                .HasForeignKey(d => d.Llid)
-                .HasConstraintName("FK__FlatsContr__LLid__4CA06362");
+                .HasForeignKey(d => d.Llid);
         });
 
         modelBuilder.Entity<Hotel>(entity =>
         {
-            entity.HasKey(e => e.Hid).HasName("PK__Hotels__C750193FFB0EDCD9");
+            entity.HasKey(e => e.Hid);
 
             entity.Property(e => e.Address).HasMaxLength(100);
             entity.Property(e => e.AvgMark).HasColumnType("decimal(3, 2)");
@@ -111,13 +104,12 @@ public partial class RealestaterentalContext : DbContext
             entity.Property(e => e.Llid).HasColumnName("LLid");
 
             entity.HasOne(d => d.Ll).WithMany(p => p.Hotels)
-                .HasForeignKey(d => d.Llid)
-                .HasConstraintName("FK__Hotels__LLid__5070F446");
+                .HasForeignKey(d => d.Llid);
         });
 
         modelBuilder.Entity<HotelsRoom>(entity =>
         {
-            entity.HasKey(e => e.Rid).HasName("PK__HotelsRo__CAF055CAC52A9CD5");
+            entity.HasKey(e => e.Rid);
 
             entity.Property(e => e.AvgMark).HasColumnType("decimal(3, 2)");
             entity.Property(e => e.CostPerDay).HasColumnType("decimal(18, 2)");
@@ -125,13 +117,12 @@ public partial class RealestaterentalContext : DbContext
             entity.Property(e => e.Header).HasMaxLength(100);
 
             entity.HasOne(d => d.HidNavigation).WithMany(p => p.HotelsRooms)
-                .HasForeignKey(d => d.Hid)
-                .HasConstraintName("FK__HotelsRooms__Hid__534D60F1");
+                .HasForeignKey(d => d.Hid);
         });
 
         modelBuilder.Entity<House>(entity =>
         {
-            entity.HasKey(e => e.Pid).HasName("PK__Houses__C57059389CC87CA9");
+            entity.HasKey(e => e.Pid);
 
             entity.Property(e => e.Address).HasMaxLength(100);
             entity.Property(e => e.AvgMark).HasColumnType("decimal(3, 2)");
@@ -142,13 +133,12 @@ public partial class RealestaterentalContext : DbContext
             entity.Property(e => e.Llid).HasColumnName("LLid");
 
             entity.HasOne(d => d.Ll).WithMany(p => p.Houses)
-                .HasForeignKey(d => d.Llid)
-                .HasConstraintName("FK__Houses__LLid__412EB0B6");
+                .HasForeignKey(d => d.Llid);
         });
 
         modelBuilder.Entity<HousesContract>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__HousesCo__3214EC078D3C1490");
+            entity.HasKey(e => e.Id);
 
             entity.Property(e => e.Cost).HasColumnType("money");
             entity.Property(e => e.Llid).HasColumnName("LLid");
@@ -158,29 +148,31 @@ public partial class RealestaterentalContext : DbContext
                 .HasConstraintName("FK__HousesContr__Lid__440B1D61");
 
             entity.HasOne(d => d.Ll).WithMany(p => p.HousesContracts)
-                .HasForeignKey(d => d.Llid)
-                .HasConstraintName("FK__HousesCont__LLid__44FF419A");
+                .HasForeignKey(d => d.Llid);
 
             entity.HasOne(d => d.PidNavigation).WithMany(p => p.HousesContracts)
-                .HasForeignKey(d => d.Pid)
-                .HasConstraintName("FK__HousesContr__Pid__45F365D3");
+                .HasForeignKey(d => d.Pid);
         });
 
         modelBuilder.Entity<LandLord>(entity =>
         {
-            entity.HasKey(e => e.Llid).HasName("PK__LandLord__77BE170E87930B01");
-
+            entity.HasKey(e => e.Llid);
             entity.Property(e => e.Llid).HasColumnName("LLid");
             entity.Property(e => e.Email).HasMaxLength(100);
             entity.Property(e => e.Login).HasMaxLength(100);
             entity.Property(e => e.Password).HasMaxLength(100);
+
         });
 
         modelBuilder.Entity<LandLordsAdditionalInfo>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__LandLord__3214EC070805EFB1");
+            entity.HasKey(e => e.Llid);
 
             entity.ToTable("LandLordsAdditionalInfo");
+
+            entity.Property(e => e.Llid)
+                .ValueGeneratedNever()
+                .HasColumnName("LLid");
 
             entity.Property(e => e.AvgMark).HasColumnType("decimal(3, 2)");
             entity.Property(e => e.Llid).HasColumnName("LLid");
@@ -188,15 +180,17 @@ public partial class RealestaterentalContext : DbContext
             entity.Property(e => e.PassportId).HasMaxLength(70);
             entity.Property(e => e.Surname).HasMaxLength(30);
             entity.Property(e => e.Telephone).HasMaxLength(20);
+            entity.HasKey(e => e.Llid);
 
-            entity.HasOne(d => d.Ll).WithMany(p => p.LandLordsAdditionalInfos)
-                .HasForeignKey(d => d.Llid)
-                .HasConstraintName("FK__LandLordsA__LLid__3E52440B");
+            entity.HasOne(d => d.Ll).WithOne(p => p.LandLordsAdditionalInfo)
+                .HasForeignKey<LandLordsAdditionalInfo>(d => d.Llid)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+
         });
 
         modelBuilder.Entity<Lessee>(entity =>
         {
-            entity.HasKey(e => e.Lid).HasName("PK__Lessees__C6505B39CFD1C6CC");
+            entity.HasKey(e => e.Lid);
 
             entity.Property(e => e.Email).HasMaxLength(50);
             entity.Property(e => e.Login).HasMaxLength(100);
@@ -205,9 +199,11 @@ public partial class RealestaterentalContext : DbContext
 
         modelBuilder.Entity<LesseesAdditionalInfo>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__LesseesA__3214EC072BB0F616");
+            entity.HasKey(e => e.Lid);
 
             entity.ToTable("LesseesAdditionalInfo");
+
+            entity.Property(e => e.Lid).ValueGeneratedNever();
 
             entity.Property(e => e.AvgMark).HasColumnType("decimal(3, 2)");
             entity.Property(e => e.Name).HasMaxLength(20);
@@ -215,14 +211,14 @@ public partial class RealestaterentalContext : DbContext
             entity.Property(e => e.Surname).HasMaxLength(30);
             entity.Property(e => e.Telephone).HasMaxLength(20);
 
-            entity.HasOne(d => d.LidNavigation).WithMany(p => p.LesseesAdditionalInfos)
-                .HasForeignKey(d => d.Lid)
-                .HasConstraintName("FK__LesseesAddi__Lid__398D8EEE");
+            entity.HasOne(d => d.LidNavigation).WithOne(p => p.LesseesAdditionalInfo)
+                .HasForeignKey<LesseesAdditionalInfo>(d => d.Lid)
+                .OnDelete(DeleteBehavior.ClientSetNull);
         });
 
         modelBuilder.Entity<RoomsContract>(entity =>
         {
-            entity.HasKey(e => e.Id).HasName("PK__RoomsCon__3214EC071DBA45A5");
+            entity.HasKey(e => e.Id);
 
             entity.Property(e => e.Cost).HasColumnType("money");
             entity.Property(e => e.Llid).HasColumnName("LLid");
@@ -232,43 +228,12 @@ public partial class RealestaterentalContext : DbContext
                 .HasConstraintName("FK__RoomsContra__Lid__5629CD9C");
 
             entity.HasOne(d => d.Ll).WithMany(p => p.RoomsContracts)
-                .HasForeignKey(d => d.Llid)
-                .HasConstraintName("FK__RoomsContr__LLid__571DF1D5");
+                .HasForeignKey(d => d.Llid);
 
             entity.HasOne(d => d.RidNavigation).WithMany(p => p.RoomsContracts)
-                .HasForeignKey(d => d.Rid)
-                .HasConstraintName("FK__RoomsContra__Rid__5812160E");
+                .HasForeignKey(d => d.Rid);
         });
 
-        modelBuilder.Entity<SelectallLandlordInfoView>(entity =>
-        {
-            entity
-                .HasNoKey()
-                .ToView("selectall_landlord_info_view");
-
-            entity.Property(e => e.AvgMark).HasColumnType("decimal(3, 2)");
-            entity.Property(e => e.Email).HasMaxLength(100);
-            entity.Property(e => e.Login).HasMaxLength(100);
-            entity.Property(e => e.Name).HasMaxLength(20);
-            entity.Property(e => e.PassportId).HasMaxLength(70);
-            entity.Property(e => e.Surname).HasMaxLength(30);
-            entity.Property(e => e.Telephone).HasMaxLength(20);
-        });
-
-        modelBuilder.Entity<SelectallLesseeInfoView>(entity =>
-        {
-            entity
-                .HasNoKey()
-                .ToView("selectall_lessee_info_view");
-
-            entity.Property(e => e.AvgMark).HasColumnType("decimal(3, 2)");
-            entity.Property(e => e.Email).HasMaxLength(50);
-            entity.Property(e => e.Login).HasMaxLength(100);
-            entity.Property(e => e.Name).HasMaxLength(20);
-            entity.Property(e => e.PassportId).HasMaxLength(70);
-            entity.Property(e => e.Surname).HasMaxLength(30);
-            entity.Property(e => e.Telephone).HasMaxLength(20);
-        });
 
         OnModelCreatingPartial(modelBuilder);
     }

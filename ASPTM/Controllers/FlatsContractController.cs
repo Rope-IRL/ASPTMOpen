@@ -1,6 +1,5 @@
-﻿using ASPTM.Helpers;
-using ASPTM.MIddleware;
-using ASPTM.Models;
+﻿using ASPTM.Models;
+using ASPTM.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,10 +7,10 @@ namespace ASPTM.Controllers
 {
     public class FlatsContractController : Controller
     {
-        private FlatsContractMiddleware fc_middleware;
+        private FlatsContractService fc_middleware;
 
 
-        public FlatsContractController( FlatsContractMiddleware fc_middleware)
+        public FlatsContractController( FlatsContractService fc_middleware)
         {
             this.fc_middleware = fc_middleware;
         }
@@ -24,7 +23,7 @@ namespace ASPTM.Controllers
         public async Task<IActionResult> Table()
         {
 
-            var flatscs = await fc_middleware.GetFlatsContractsAsync();
+            var flatscs = await fc_middleware.GetFlatsContractsFullInfoAsync(1, 20);
             if (flatscs != null) { 
                 return View(flatscs);
             }

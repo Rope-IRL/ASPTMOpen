@@ -1,6 +1,6 @@
-﻿using ASPTM.Helpers;
-using ASPTM.MIddleware;
+﻿
 using ASPTM.Models;
+using ASPTM.Services;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
@@ -9,8 +9,8 @@ namespace ASPTM.Controllers
 {
     public class FlatController : Controller
     {
-        private FlatMiddleware _middleware;
-        public FlatController(FlatMiddleware _middleware)
+        private FlatService _middleware;
+        public FlatController(FlatService _middleware)
         {
             this._middleware = _middleware;
         }

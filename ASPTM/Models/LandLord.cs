@@ -23,7 +23,7 @@ public partial class LandLord
 
     public virtual ICollection<HousesContract> HousesContracts { get; set; } = new List<HousesContract>();
 
-    public virtual ICollection<LandLordsAdditionalInfo> LandLordsAdditionalInfos { get; set; } = new List<LandLordsAdditionalInfo>();
+    public virtual LandLordsAdditionalInfo LandLordsAdditionalInfo { get; set; } = new LandLordsAdditionalInfo();
 
     public virtual ICollection<RoomsContract> RoomsContracts { get; set; } = new List<RoomsContract>();
 }

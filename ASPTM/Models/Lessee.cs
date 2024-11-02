@@ -17,7 +17,7 @@ public partial class Lessee
 
     public virtual ICollection<HousesContract> HousesContracts { get; set; } = new List<HousesContract>();
 
-    public virtual ICollection<LesseesAdditionalInfo> LesseesAdditionalInfos { get; set; } = new List<LesseesAdditionalInfo>();
-
     public virtual ICollection<RoomsContract> RoomsContracts { get; set; } = new List<RoomsContract>();
+    public virtual LesseesAdditionalInfo LesseesAdditionalInfo { get; set; } = new LesseesAdditionalInfo();
+
 }

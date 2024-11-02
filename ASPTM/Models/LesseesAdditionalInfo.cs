@@ -5,7 +5,7 @@ namespace ASPTM.Models;
 
 public partial class LesseesAdditionalInfo
 {
-    public int Id { get; set; }
+    public int? Lid { get; set; }
 
     public string Name { get; set; } = null!;
 
@@ -19,7 +19,6 @@ public partial class LesseesAdditionalInfo
 
     public decimal AvgMark { get; set; }
 
-    public int? Lid { get; set; }
 
     public virtual Lessee? LidNavigation { get; set; }
 }

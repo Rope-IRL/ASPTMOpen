@@ -5,7 +5,7 @@ namespace ASPTM.Models;
 
 public partial class LandLordsAdditionalInfo
 {
-    public int Id { get; set; }
+    public int? Llid { get; set; }
 
     public string Name { get; set; } = null!;
 
@@ -19,7 +19,6 @@ public partial class LandLordsAdditionalInfo
 
     public decimal AvgMark { get; set; }
 
-    public int? Llid { get; set; }
 
     public virtual LandLord? Ll { get; set; }
 }
